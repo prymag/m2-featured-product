@@ -1,11 +1,46 @@
-
-<h1>Default template In use</h1>
 <?php 
+
+    $linkTo = $block->getData('link_to');
+    $link = $block->getFeaturedLink();
+
 	$product = $block->getTheProduct();
 	
-	echo $product->getName();
-	echo $product->getProductUrl();
-	
-	echo $block->getFeaturedImage();
-	
+	$productName =  $product->getName();
+	$productUrl = $product->getProductUrl();
+	$featuredImage = $block->getFeaturedImage();
+	$shortDescription = $block->getShortDescription();
 ?>
+
+<div class="prymag-featured-product">
+	<div class="item-wrapper">
+		<div class="image">
+            <?php if ($linkTo != 'none'): ?>
+                <a href="<?php echo $link; ?>">
+                    <img src="<?php echo $featuredImage; ?>" alt="">
+                </a>
+            <?php else: ?>
+                <img src="<?php echo $featuredImage; ?>" alt="">
+            <?php endif; ?>
+		</div>
+		<div class="content-wrapper">
+			<div class="content">
+				<h2 class="title">
+                    <?php if ($linkTo != 'none'): ?>
+                        <a href="<?php echo $link; ?>">
+                            <?php echo $productName; ?>&raquo;
+                        </a>
+                    <?php else: ?>
+                            <?php echo $productName; ?>
+                    <?php endif; ?>
+                </h2>
+				<div class="description">
+                    <p><?php echo $shortDescription; ?>
+                    <?php if ($linkTo != 'none'): ?>
+                        <a class="btn-link" href="<?php echo $link; ?>">Mer...</a>
+                    <?php endif; ?>
+                    </p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,11 +1,32 @@
 <?xml version="1.0" ?>
-<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:prymag:Magento_Widget:etc/widget.xsd">
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Widget:etc/widget.xsd">
 	<widget class="Prymag\FeaturedProduct\Block\Widget\FeaturedProduct" id="prymag_featured_product">
 		<label>Prymag Featured Product</label>
 		<description>Individual Product</description>
 		<parameters>
+            
+
+            <parameter name="link_to" xsi:type="select" required="true" visible="true">
+                <label translate="true">Link To</label>
+                <description translate="true">Link this item to</description>
+                <options>
+                    <option name="default" value="product_item" selected="true">
+                        <label translate="true">Product Item</label>
+                    </option>
+                    <option name="cms_page" value="cms_page">
+                        <label translate="true">CMS Page</label>
+                    </option>
+                    <option name="none" value="none">
+                        <label translate="true">None</label>
+                    </option>
+                </options>
+            </parameter>
+
 			<parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
                 <label translate="true">Product</label>
+                <depends>
+                    <parameter name="link_to" value="product_item" />
+                </depends>
                 <block class="Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser">
                     <data>
                         <item name="button" xsi:type="array">
@@ -14,6 +35,21 @@
                     </data>
                 </block>
             </parameter>
+
+            <parameter name="page_id" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">CMS Page</label>
+                <depends>
+                    <parameter name="link_to" value="cms_page" />
+                </depends>
+                <block class="Magento\Cms\Block\Adminhtml\Page\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Page...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+
 			<parameter xsi:type="block" name="featured_image" required="true" visible="true" sort_order="10">
 				<label translate="true">Featured Image</label>
 				<block class="Prymag\Core\Block\Adminhtml\Widget\Type\ImageChooser">
