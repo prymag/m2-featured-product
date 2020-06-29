@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<widgets xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:prymag:Magento_Widget:etc/widget.xsd">
+	<widget class="Prymag\FeaturedProduct\Block\Widget\FeaturedProduct" id="prymag_featured_product">
+		<label>Prymag Featured Product</label>
+		<description>Individual Product</description>
+		<parameters>
+			<parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
+                <label translate="true">Product</label>
+                <block class="Magento\Catalog\Block\Adminhtml\Product\Widget\Chooser">
+                    <data>
+                        <item name="button" xsi:type="array">
+                            <item name="open" xsi:type="string" translate="true">Select Product...</item>
+                        </item>
+                    </data>
+                </block>
+            </parameter>
+			<parameter xsi:type="block" name="featured_image" required="true" visible="true" sort_order="10">
+				<label translate="true">Featured Image</label>
+				<block class="Prymag\Core\Block\Adminhtml\Widget\Type\ImageChooser">
+					<data>
+						<item name="button" xsi:type="array">
+							<item name="open" xsi:type="string">Choose Image...</item>
+						</item>
+					</data>
+				</block>
+			</parameter>
+			<parameter name="short_desc" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Short Description</label>
+            </parameter>
+		</parameters>
+	</widget>
+</widgets>
