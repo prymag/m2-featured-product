@@ -5,7 +5,9 @@
 		<description>Individual Product</description>
 		<parameters>
             
-
+            <parameter name="title" xsi:type="text" required="true" visible="true" sort_order="10">
+                <label>Title</label>
+            </parameter>
             <parameter name="link_to" xsi:type="select" required="true" visible="true">
                 <label translate="true">Link To</label>
                 <description translate="true">Link this item to</description>
@@ -22,7 +24,7 @@
                 </options>
             </parameter>
 
-			<parameter name="id_path" xsi:type="block" visible="true" required="true" sort_order="10">
+			<parameter name="id_path" xsi:type="block" visible="true" sort_order="10">
                 <label translate="true">Product</label>
                 <depends>
                     <parameter name="link_to" value="product_item" />
@@ -36,7 +38,7 @@
                 </block>
             </parameter>
 
-            <parameter name="page_id" xsi:type="block" visible="true" required="true" sort_order="10">
+            <parameter name="page_id" xsi:type="block" visible="true" sort_order="10">
                 <label translate="true">CMS Page</label>
                 <depends>
                     <parameter name="link_to" value="cms_page" />

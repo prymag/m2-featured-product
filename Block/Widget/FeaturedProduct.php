@@ -110,4 +110,10 @@ class FeaturedProduct extends \Magento\Framework\View\Element\Html\Link implemen
 
         return $this->_pageLink;
     }
+
+    public function getTitle()
+    {
+        # code...
+        return $this->getData('title');
+    }
 }

@@ -2,11 +2,8 @@
 
     $linkTo = $block->getData('link_to');
     $link = $block->getFeaturedLink();
+    $title = $block->getTitle();
 
-	$product = $block->getTheProduct();
-	
-	$productName =  $product->getName();
-	$productUrl = $product->getProductUrl();
 	$featuredImage = $block->getFeaturedImage();
 	$shortDescription = $block->getShortDescription();
 ?>
@@ -27,16 +24,16 @@
 				<h2 class="title">
                     <?php if ($linkTo != 'none'): ?>
                         <a href="<?php echo $link; ?>">
-                            <?php echo $productName; ?>&raquo;
+                            <?php echo $title; ?> &raquo;
                         </a>
                     <?php else: ?>
-                            <?php echo $productName; ?>
+                            <?php echo $title; ?>
                     <?php endif; ?>
                 </h2>
 				<div class="description">
                     <p><?php echo $shortDescription; ?>
                     <?php if ($linkTo != 'none'): ?>
-                        <a class="btn-link" href="<?php echo $link; ?>">Mer...</a>
+                        <a class="btn-link" href="<?php echo $link; ?>"><?php echo __('Show More'); ?>...</a>
                     <?php endif; ?>
                     </p>
 				</div>
